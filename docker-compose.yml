@@ -1,0 +1,13 @@
+services:
+    db:
+        image: postgres:latest
+        container_name: postgres_db
+        restart: always
+        environment:
+            POSTGRES_USER: user # မိမိနှစ်သက်ရာ username ပြောင်းပါ
+            POSTGRES_PASSWORD: password # မိမိနှစ်သက်ရာ password ပြောင်းပါ
+            POSTGRES_DB: test_db # database နာမည်
+        ports:
+            - "5433:5432"
+        volumes:
+            - ./postgres_data:/var/lib/postgresql
