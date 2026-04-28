@@ -1,0 +1,22 @@
+info:
+  name: Store
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: http://127.0.0.1:8000/api/posts
+  body:
+    type: json
+    data: |-
+      {
+        'title' : 'Blog 1',
+        'content' : 'This is blog content'
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
