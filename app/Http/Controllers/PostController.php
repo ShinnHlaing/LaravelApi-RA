@@ -9,7 +9,8 @@ class PostController extends Controller
 {
     public function index()
     {
-        return response()->json(['message' => 'Welcome from API project!']);
+        $post = Post::all();
+        return response()->json(['message' => 'Posts retrieved successfully!', 'data' => $post]);
     }
 
     public function show() {}
