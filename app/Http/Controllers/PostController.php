@@ -13,7 +13,11 @@ class PostController extends Controller
         return response()->json(['message' => 'Posts retrieved successfully!', 'data' => $post]);
     }
 
-    public function show() {}
+    public function show(int $id)
+    {
+        $post = Post::find($id);
+        return response()->json(['message' => 'Post retrieved successfully!', 'data' => $post]);
+    }
 
     public function store(Request $request)
     {
