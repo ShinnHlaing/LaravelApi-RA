@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostStoreRequest;
 use App\Http\Resources\PostResource;
 use App\Models\Post;
 use Exception;
@@ -30,24 +31,24 @@ class PostController extends Controller
         }
     }
 
-    public function store(Request $request)
+    public function store(PostStoreRequest $request)
     {
-        $validator = Validator::make(
-            $request->all(),
-            [
-                'title' => 'required|string|max:255',
-                'content' => 'required|string',
-            ],
-            [
-                'title.required' => "title lo nay tl",
-                'title.string' => "title ka string pr",
-                'content.required' => "content lo nay tl",
-            ]
-        );
+        // $validator = Validator::make(
+        //     $request->all(),
+        //     [
+        //         'title' => 'required|string|max:255',
+        //         'content' => 'required|string',
+        //     ],
+        //     [
+        //         'title.required' => "title lo nay tl",
+        //         'title.string' => "title ka string pr",
+        //         'content.required' => "content lo nay tl",
+        //     ]
+        // );
 
-        if ($validator->fails()) {
-            return response()->json(['message' => 'Validation error!', 'errors' => $validator->errors()], 422);
-        }
+        // if ($validator->fails()) {
+        //     return response()->json(['message' => 'Validation error!', 'errors' => $validator->errors()], 422);
+        // }
 
         try {
             $post = Post::create([
