@@ -1,0 +1,25 @@
+meta {
+  name: Todo Update
+  type: http
+  seq: 4
+}
+
+put {
+  url: http://127.0.0.1:8000/api/todos/6
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "title" : "Reading",
+    "description" : "Anime Comic",
+    "status" : "pending",
+    "date" : "today"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

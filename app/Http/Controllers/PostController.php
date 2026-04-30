@@ -33,6 +33,7 @@ class PostController extends Controller
 
     public function store(PostStoreRequest $request)
     {
+        dd($request->all());
         try {
             $post = Post::create([
                 'title' => $request->title,
