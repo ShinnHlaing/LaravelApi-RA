@@ -4,6 +4,8 @@ namespace App\Http\Requests;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Contracts\Validation\Validator;
 
 class StoreTodoRequest extends FormRequest
 {
@@ -44,5 +46,13 @@ class StoreTodoRequest extends FormRequest
             'date.date' => 'Date must be a valid date.',
             'date.after_or_equal' => 'Date must be today or a future date.',
         ];
+    }
+
+    public function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response()->json([
+            'message' => 'Validation Failed!',
+            'errors' => $validator->errors()
+        ], 422));
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreTodoRequest;
 use App\Http\Resources\TodoResource;
 use App\Models\Todo;
 use Exception;
@@ -39,7 +40,7 @@ class TodoController extends Controller
         }
     }
 
-    public function store(Request $request)
+    public function store(StoreTodoRequest $request)
     {
         try {
             $todo = Todo::create([
